@@ -1,5 +1,3 @@
-/* Ahmed Magdy*/
-
 // Define Product
 let productsDom = document.querySelector(".products");
 let products = JSON.parse(localStorage.getItem("products")) || productsDB;
@@ -46,12 +44,10 @@ let drawProductsUI;
   productsDom.innerHTML = productsUI.join("");
 })(JSON.parse(localStorage.getItem("products")) || products);
 
-/* Ahmed Tawab*/
-
 // Add To cart
 function addedToCart(id) {
   if (localStorage.getItem("username")) {
-    let products = JSON.parse(localStorage.getItem("products")) || products;
+    let products = JSON.parse(localStorage.getItem("products")) || productsDB;
     let product = products.find((item) => item.id === id);
     let isProductInCart = addedItem.some((i) => i.id === product.id);
 
@@ -103,7 +99,6 @@ function search(title, myArray) {
   drawProductsUI(arr);
 }
 
-/* Asmaa */
 
 function getUniqueArr(arr, filterType) {
   let unique = arr
@@ -165,8 +160,6 @@ function editProduct(id) {
   window.location = "editProduct.html";
 }
 
-/* Ahmed Khaled*/
-
 // Filter Products By Size
 let sizeFilter = document.getElementById("size-filter");
 
@@ -174,7 +167,7 @@ sizeFilter.addEventListener("change", getProductsFilteredBySize);
 
 function getProductsFilteredBySize(e) {
   let val = e.target.value;
-  let products = JSON.parse(localStorage.getItem("products")) || products;
+  let products = JSON.parse(localStorage.getItem("products")) || productsDB;
 
   if (val === "all") {
     drawProductsUI(products);
